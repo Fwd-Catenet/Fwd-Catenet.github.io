@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fouad Azzouzi — Cybersécurité · EPITA</title>
+<meta name="title" content="Fouad Azzouzi — Cybersécurité · EPITA">
+<meta name="description" content="Portfolio de Fouad Azzouzi, futur ingénieur en Cybersécurité. EPITA x Polytechnique. Sécurité offensive, systèmes, réseaux et architecture.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ton-domaine.com/">
+<meta property="og:title" content="Fouad Azzouzi — Ingénieur Cybersécurité">
+<meta property="og:description" content="Découvrez mon parcours, mes projets et mes compétences en cybersécurité offensive et défensive.">
+<meta property="og:image" content="https://ton-domaine.com/preview.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<noscript>Votre navigateur ne supporte pas JavaScript. Le site est consultable, mais sans effets interactifs.</noscript>
+
+<div id="cd"></div>
+<div id="cr"></div>
+<div id="glow"></div>
+<div id="prog"></div>
+
+<div id="ldr">
+  <div id="lphase">initializing...</div>
+  <div id="lnum">0</div>
+  <div id="lhex">0x0000</div>
+  <div id="lbar"><div id="lbfill"></div></div>
+</div>
+
+<nav>
+  <a href="#hero" class="nlogo hover-target glitch-hover" data-t="CYBER∕SEC">CYBER∕SEC</a>
+  
+  <div id="team-toggle" class="team-toggle hover-target sound-hover">
+    <span id="lbl-red" class="active">RED TEAM</span>
+    <div class="switch"><div class="slider"></div></div>
+    <span id="lbl-blue">BLUE TEAM</span>
+  </div>
+
+  <ul class="nlinks">
+    <li><a href="#about"      data-sec="about" class="hover-target sound-hover">À propos</a></li>
+    <li><a href="#curriculum" data-sec="curriculum" class="hover-target sound-hover">Cursus</a></li>
+    <li><a href="#expertise"  data-sec="expertise" class="hover-target sound-hover">Expertise</a></li>
+    <li><a href="#projets"    data-sec="projets" class="hover-target sound-hover">Projets</a></li>
+    <li><a href="#skills"     data-sec="skills" class="hover-target sound-hover">Tech</a></li>
+    <li><a href="#contact"    data-sec="contact" class="hover-target sound-hover">Contact</a></li>
+  </ul>
+</nav>
+
+<canvas id="cvs"></canvas>
+
+<div class="badge hover-target">
+        <svg viewBox="0 0 106 106" width="106" height="106">
+          <defs><path id="cp" d="M53,53 m-41,0 a41,41 0 1,1 82,0 a41,41 0 1,1 -82,0" fill="none"/></defs>
+          <text class="badge-ctext" font-size="7" letter-spacing="2.4">
+            <textPath href="#cp">EPITA · POLYTECHNIQUE · CYBER · 2025 · </textPath>
+          </text>
+        </svg>
+        <div class="badge-inner">CYBER<br>SEC</div>
+      </div>
+
+
+<div class="site-content">
+
+  <section id="hero">
+    <div class="h-toprow">
+      <div class="h-tag">// 01 · Bachelor Cybersécurité · EPITA × Polytechnique</div>
+    </div>
+
+    <div class="h-vert">C · Y · B · E · R · S · É · C · U · R · I · T · É</div>
+
+    <h1 class="h-name glitch-hover hover-target" id="hname" data-t="Fouad Azzouzi">Fouad Azzouzi<span class="bk"></span></h1>
+
+    <div class="h-botrow">
+      <p class="h-sub">
+        Futur ingénieur en <b>cybersécurité</b>.<br>
+        Réseaux · Sécurité offensive ·<br><b>Systèmes et Architecture.</b>
+      </p>
+      
+      <div style="margin-right: auto; margin-left: 2rem;">
+         <a href="FouadAzzouzi_CV.pdf" download="FouadAzzouzi_CV.pdf" class="btn-cv mag mag-target hover-target glitch-hover sound-hover" data-t="TÉLÉCHARGER CV">
+            ↓ Télécharger CV
+         </a>
+      </div>
+
+      <div class="h-scroll hover-target">
+        <div class="h-line"></div>
+        <span>scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="mqwrap">
+    <div class="mqtrack">
+      <span class="hi">EPITA</span> <span>Reverse Engineering</span> <span class="hi">×</span>
+      <span>Pentest Web</span> <span class="hi">×</span> <span>Linux Kali</span> <span class="hi">×</span>
+      <span>Cryptographie RSA</span> <span class="hi">×</span> <span>OSINT</span> <span class="hi">×</span>
+      <span>Malware Analysis</span> <span class="hi">×</span> <span>Active Directory</span> <span class="hi">×</span>
+      <span>Forensique</span> <span class="hi">×</span> <span>Python · C · Assembly</span> <span class="hi">×</span>
+      <span>TCP/IP · Subnetting</span> <span class="hi">×</span> <span>Docker</span> <span class="hi">×</span>
+      <span class="hi">EPITA</span> <span>Reverse Engineering</span> <span class="hi">×</span>
+      <span>Pentest Web</span> <span class="hi">×</span> <span>Linux Kali</span> <span class="hi">×</span>
+      <span>Cryptographie RSA</span> <span class="hi">×</span> <span>OSINT</span> <span class="hi">×</span>
+      <span>Malware Analysis</span> <span class="hi">×</span> <span>Active Directory</span> <span class="hi">×</span>
+      <span>Forensique</span> <span class="hi">×</span> <span>Python · C · Assembly</span> <span class="hi">×</span>
+      <span>TCP/IP · Subnetting</span> <span class="hi">×</span> <span>Docker</span> <span class="hi">×</span>
+    </div>
+  </div>
+
+  <div id="stats">
+    <div class="stat rv hover-target">
+      <span class="stn" data-count="180">0</span>
+      <span class="stl">ECTS · Bachelor Cybersécurité</span>
+    </div>
+    <div class="stat rv hover-target">
+      <span class="stn" data-count="4">0</span>
+      <span class="stl">Projets techniques documentés</span>
+    </div>
+    <div class="stat rv hover-target">
+      <span class="stn" data-count="1">0</span>
+      <span class="stl">Semestre à Séoul · Konkuk</span>
+    </div>
+    <div class="stat rv hover-target">
+      <span class="stn" data-count="2027" data-nocount="1">2027</span>
+      <span class="stl">Alternance recherchée · sept.</span>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="slbl">01 — À propos</div>
+    <p class="a-stmt rv">
+      Étudiant en <strong>Bachelor Cybersécurité</strong> à l'<strong>EPITA</strong>,
+      en collaboration avec l'<em>École Polytechnique</em>.
+      Je construis des fondations solides en <strong>algorithmique, réseaux
+      et sécurité offensive</strong> — pour comprendre les systèmes en profondeur,
+      les <strong>tester, les défendre</strong>.
+    </p>
+
+    <div class="a-terminal hover-target rv">
+      <div><span class="p">$ </span><span class="c">cat about.txt</span></div>
+      <div class="o">──────────────────────────────────────────</div>
+      <div class="o">Nom       <span class="b">:</span> Fouad Azzouzi</div>
+      <div class="o">École     <span class="b">:</span> EPITA × École Polytechnique</div>
+      <div class="o">Promo     <span class="b">:</span> 2025 — 2028</div>
+      <div class="o">Focus     <span class="b">:</span> Sécurité offensive &amp; défensive</div>
+      <div class="o">Localisation <span class="b">:</span> Paris, France</div>
+      <div class="o">Échange   <span class="b">:</span> Konkuk University, Séoul (S4 · 2027)</div>
+      <div class="o">Objectif  <span class="b">:</span> Alternance cyber · septembre 2027</div>
+      <div class="o">──────────────────────────────────────────</div>
+      <div><span class="p">$ </span><span class="bk" style="animation-delay:.4s"></span></div>
+    </div>
+
+    <div class="a-meta">
+      <div class="rv hover-target"><div class="ml">Formation</div><div class="mv">Bachelor Cybersécurité</div></div>
+      <div class="rv hover-target"><div class="ml">École</div><div class="mv">EPITA × Polytechnique</div></div>
+      <div class="rv hover-target"><div class="ml">Durée</div><div class="mv">3 ans · 6 semestres</div></div>
+      <div class="rv hover-target"><div class="ml">Crédits totaux</div><div class="mv">180 ECTS</div></div>
+      <div class="rv hover-target"><div class="ml">Statut actuel</div><div class="mv"><span class="live">En cours</span></div></div>
+    </div>
+  </section>
+
+  <section id="curriculum">
+    <div class="cur-head rv">
+      <div>
+        <div class="slbl">02 — Cursus</div>
+        <h2 class="cur-title">PROGRAMME<br>ACADÉMIQUE</h2>
+      </div>
+      <div class="yearrow">
+        <div class="year on" data-y="1">
+          <button class="ybtn hover-target sound-hover" aria-haspopup="true"><span class="ylbl">1<sup>re</sup> année</span> <span class="ysub">2025–26</span></button>
+          <div class="ymenu">
+            <button class="tbtn on hover-target sound-hover" data-s="s1">Semestre 1</button>
+            <button class="tbtn hover-target sound-hover" data-s="s2">Semestre 2</button>
+          </div>
+        </div>
+        <div class="year" data-y="2">
+          <button class="ybtn hover-target sound-hover" aria-haspopup="true"><span class="ylbl">2<sup>e</sup> année</span> <span class="ysub">2026–27</span></button>
+          <div class="ymenu">
+            <button class="tbtn hover-target sound-hover" data-s="s3">Semestre 3</button>
+            <button class="tbtn hover-target sound-hover" data-s="s4">Semestre 4 · Séoul</button>
+          </div>
+        </div>
+        <div class="year" data-y="3">
+          <button class="ybtn hover-target sound-hover" aria-haspopup="true"><span class="ylbl">3<sup>e</sup> année</span> <span class="ysub">2027–28</span></button>
+          <div class="ymenu">
+            <button class="tbtn hover-target sound-hover" data-s="s5">Semestre 5</button>
+            <button class="tbtn hover-target sound-hover" data-s="s6">Semestre 6</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sem-label" id="sem-label">1<sup>re</sup> année · Semestre 1</div>
+
+    <div class="sem on" id="s1">
+      <div class="ue-grid">
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">Mathématiques &amp; Informatique Fondamentales</div><span class="ects">7 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Harmonisation Mathématiques<span class="cf">×1</span></li>
+            <li class="ecue">Effectuer un Raisonnement Mathématique<span class="cf">×3</span></li>
+            <li class="ecue">Algorithmique &amp; Structures de Données 1<span class="cf">×3</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">ISN — Langages</div><span class="ects">6 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Introduction au langage Python<span class="cf">×3</span></li>
+            <li class="ecue">Introduction au langage C<span class="cf">×3</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">ISN — Bases</div><span class="ects">9 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Réseaux 1<span class="cf">×2</span></li>
+            <li class="ecue">Introduction au système Linux<span class="cf">×3</span></li>
+            <li class="ecue">Architecture des Ordinateurs 1<span class="cf">×2</span></li>
+            <li class="ecue">Électronique &amp; Électricité 1<span class="cf">×1</span></li>
+            <li class="ecue">IA Générative côté utilisateur<span class="cf">×1</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">Sciences Humaines &amp; Communication</div><span class="ects">4 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Communication &amp; Expression 1<span class="cf">×1</span></li>
+            <li class="ecue">Méthodologie de travail<span class="cf">×1</span></li>
+            <li class="ecue">Anglais Général 1<span class="cf">×1</span></li>
+            <li class="ecue">Anglais Technique 1<span class="cf">×1</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">SAÉ — Projets Pratiques</div><span class="ects">4 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Campagne de sensibilisation sécurité<span class="cf">×1</span></li>
+            <li class="ecue">Développer un jeu ou un outil<span class="cf">×3</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sem" id="s2">
+      <div class="ue-grid">
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">Mathématiques &amp; Informatique Fondamentales</div><span class="ects">5 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Analyse Mathématique<span class="cf">×1</span></li>
+            <li class="ecue">Arithmétique pour la Cryptographie<span class="cf">×2</span></li>
+            <li class="ecue">Algorithmique &amp; Structures de Données 2<span class="cf">×2</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">ISN — Langages</div><span class="ects">6 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Python pour la Sécurité<span class="cf">×2</span></li>
+            <li class="ecue">Performance &amp; Mémoire en C<span class="cf">×2</span></li>
+            <li class="ecue">Développement Web — Node.js<span class="cf">×2</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">ISN — Bases</div><span class="ects">10 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Réseaux 2<span class="cf">×2</span></li>
+            <li class="ecue">Linux 2 &amp; Administration<span class="cf">×3</span></li>
+            <li class="ecue">Bases de Données — SQL<span class="cf">×2</span></li>
+            <li class="ecue">Architecture &amp; Électronique 2<span class="cf">×2</span></li>
+            <li class="ecue">Pentest Web<span class="cf">×1</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">Sciences Humaines &amp; Communication</div><span class="ects">5 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Expression &amp; Ouverture culturelle<span class="cf">×1</span></li>
+            <li class="ecue">Recherche emploi &amp; Entreprise<span class="cf">×1</span></li>
+            <li class="ecue">Anglais Général &amp; Technique 2<span class="cf">×2</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">SAÉ — Projets Pratiques</div><span class="ects">4 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Installer &amp; configurer un parc<span class="cf">×3</span></li>
+            <li class="ecue">Atelier Pentest Web<span class="cf">×1</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sem" id="s3">
+      <div class="ue-grid">
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">Mathématiques &amp; Informatique Avancées</div><span class="ects">5 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Introduction aux Graphes &amp; Matrices<span class="cf">×2</span></li>
+            <li class="ecue">Probabilités Discrètes<span class="cf">×2</span></li>
+            <li class="ecue">Complexité Algorithmique<span class="cf">×1</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">ISN — Langages</div><span class="ects">4 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Assembleur x86<span class="cf">×2</span></li>
+            <li class="ecue">Programmation Orientée Objet (Java)<span class="cf">×2</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">ISN — Bases</div><span class="ects">6 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Fondamentaux de Windows<span class="cf">×1.5</span></li>
+            <li class="ecue">Introduction à Active Directory<span class="cf">×1.5</span></li>
+            <li class="ecue">Réseaux Avancés<span class="cf">×2</span></li>
+            <li class="ecue">Électronique &amp; Électricité 3<span class="cf">×1</span></li>
+          </ul>
+        </div>
+        <div class="ue cy rv hover-target">
+          <div class="ue-top"><div class="ue-n">⚔ Cybersécurité — Techniques &amp; Outils</div><span class="ects r">7 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Virtualisation &amp; Sécurité conteneurs<span class="cf r">×2</span></li>
+            <li class="ecue">Reverse Engineering<span class="cf r">×2</span></li>
+            <li class="ecue">Forensique &amp; Preuves Numériques<span class="cf r">×2</span></li>
+            <li class="ecue">OSINT<span class="cf r">×1</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">Sciences Humaines &amp; Communication</div><span class="ects">4 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Droit Général<span class="cf">×1</span></li>
+            <li class="ecue">Projet Professionnel &amp; Personnel<span class="cf">×1</span></li>
+            <li class="ecue">Anglais pour la mobilité internationale<span class="cf">×1</span></li>
+            <li class="ecue">Anglais pour la cybersécurité<span class="cf">×1</span></li>
+          </ul>
+        </div>
+        <div class="ue rv hover-target">
+          <div class="ue-top"><div class="ue-n">SAÉ — Stage &amp; Recherche</div><span class="ects">4 ECTS</span></div>
+          <ul class="ecues">
+            <li class="ecue">Stage ouvrier<span class="cf">1 ECTS</span></li>
+            <li class="ecue">Initiation à la démarche de recherche<span class="cf">3 ECTS</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sem" id="s4">
+      <div class="ue-grid">
+        <div class="ue cy ue-wide rv hover-target">
+          <div class="ue-top"><div class="ue-n">✈ Semestre d'échange international — Konkuk University</div><span class="ects r">S4 · 2027</span></div>
+          <ul class="ecues">
+            <li class="ecue">Université partenaire<span class="cf r">Konkuk University</span></li>
+            <li class="ecue">Ville<span class="cf r">Séoul, Corée du Sud</span></li>
+            <li class="ecue">Période<span class="cf r">Printemps 2027</span></li>
+            <li class="ecue">Programme de cours<span class="cf r">À venir</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sem" id="s5">
+      <div class="ue-grid">
+        <div class="ue ue-wide rv hover-target">
+          <div class="ue-top"><div class="ue-n">3<sup>e</sup> année en alternance — Semestre 5</div><span class="ects">À venir</span></div>
+          <ul class="ecues">
+            <li class="ecue">Début<span class="cf">Septembre 2027</span></li>
+            <li class="ecue">Rythme<span class="cf">2 sem. entreprise / 1 sem. école</span></li>
+            <li class="ecue">Statut<span class="cf">Recherche d'alternance en cours</span></li>
+            <li class="ecue">Programme détaillé<span class="cf">Publié par l'école à la rentrée</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sem" id="s6">
+      <div class="ue-grid">
+        <div class="ue ue-wide rv hover-target">
+          <div class="ue-top"><div class="ue-n">3<sup>e</sup> année en alternance — Semestre 6</div><span class="ects">À venir</span></div>
+          <ul class="ecues">
+            <li class="ecue">Période<span class="cf">Printemps 2028</span></li>
+            <li class="ecue">Rythme<span class="cf">2 sem. entreprise / 1 sem. école</span></li>
+            <li class="ecue">Diplôme<span class="cf">Bachelor Cybersécurité · 180 ECTS</span></li>
+            <li class="ecue">Programme détaillé<span class="cf">Publié par l'école</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="expertise">
+    <div class="slbl rv">03 — Macro Architecture</div>
+    <div class="exp-header rv"><h2>Pôles<br>D'Expertise</h2></div>
+    <div class="grid-skills">
+      <div class="skill-group cy hover-target rv">
+        <h3>01 — Offensive & Forensics</h3>
+        <ul>
+          <li>Pentest Web & Exploitation (OWASP)</li>
+          <li>Reverse Engineering & Analyse de Malwares</li>
+          <li>Investigation Numérique (Forensics)</li>
+          <li>Open Source Intelligence (OSINT)</li>
+          <li>Python appliqué à l'automatisation sécurité</li>
+        </ul>
+      </div>
+      <div class="skill-group ac hover-target rv">
+        <h3>02 — SysAdmin & Réseaux</h3>
+        <ul>
+          <li>Administration Linux & Scripts Bash</li>
+          <li>Windows Active Directory</li>
+          <li>Virtualisation & Sécurité Docker</li>
+          <li>Réseaux Avancés (Routage, TCP/IP, NAT)</li>
+          <li>Introduction aux architectures Cloud</li>
+        </ul>
+      </div>
+      <div class="skill-group hover-target rv">
+        <h3>03 — Ingénierie Logicielle</h3>
+        <ul>
+          <li>Langage C (Performance, Pointeurs)</li>
+          <li>Architecture Assembleur x86</li>
+          <li>Programmation Orientée Objet (Java)</li>
+          <li>Développement Web (Node.js, JS)</li>
+          <li>Bases de Données (SQL)</li>
+        </ul>
+      </div>
+      <div class="skill-group ac hover-target rv">
+        <h3>04 — Mathématiques & Fondations</h3>
+        <ul>
+          <li>Algorithmique & Structures de données</li>
+          <li>Mathématiques Avancées (Graphes, Matrices)</li>
+          <li>Complexité Algorithmique & Probabilités</li>
+          <li>Cryptographie (RSA, ElGamal)</li>
+          <li>Architecture CPU & Électronique</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="slbl rv">04 — Projets & CTF</div>
+    <div class="prj-grid">
+      <div class="prj-card rv hover-target mag-target">
+        <div class="prj-num">[ 01 ] · GRC · 11/2025 – 02/2026</div>
+        <div class="prj-title">Campagne de Sensibilisation</div>
+        <div class="prj-desc">Modélisation d'attaques sur une organisation, recherches OSINT et analyse des risques financiers et opérationnels.</div>
+        <span class="prj-stat">BACHELOR · S1</span>
+      </div>
+      <div class="prj-card rv hover-target mag-target">
+        <div class="prj-num">[ 02 ] · C · 09/2024 – 12/2024</div>
+        <div class="prj-title">OCR · Solveur de mots mêlés</div>
+        <div class="prj-desc">Pipeline de prétraitement d'images : réduction de bruit, binarisation, détection de la grille et des cases.</div>
+        <span class="prj-stat">PRÉPA INTÉGRÉE EPITA</span>
+      </div>
+      <div class="prj-card rv hover-target mag-target">
+        <div class="prj-num">[ 03 ] · OCaml · 01/2022 – 05/2022</div>
+        <div class="prj-title">AFIT · Arithmetic For IT</div>
+        <div class="prj-desc">Bibliothèque de théorie des nombres et d'arithmétique modulaire (petit théorème de Fermat, restes chinois).</div>
+        <span class="prj-stat">PRÉPA INTÉGRÉE EPITA</span>
+      </div>
+      <div class="prj-card rv hover-target mag-target">
+        <div class="prj-num">[ 04 ] · Crypto · 2026</div>
+        <div class="prj-title">Paillier &amp; ElGamal</div>
+        <div class="prj-desc">Implémentation des cryptosystèmes à clé publique Paillier et ElGamal : génération de clés, chiffrement/déchiffrement et propriétés homomorphes.</div>
+        <span class="prj-stat">BACHELOR · CRYPTOGRAPHIE</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="slbl rv">05 — Technologies</div>
+    <div class="sk-wrap">
+      <div>
+        <div class="sk-cat rv">Langages &amp; Développement</div>
+        <div class="tags">
+          <span class="tag hi hover-target rv">Python</span>
+          <span class="tag hi hover-target rv">C</span>
+          <span class="tag hover-target rv">Bash / Shell</span>
+          <span class="tag hover-target rv">JavaScript</span>
+          <span class="tag hover-target rv">HTML &amp; CSS</span>
+          <span class="tag hover-target rv">SQL</span>
+          <span class="tag hover-target rv">Assembleur x86</span>
+          <span class="tag hover-target rv">Java</span>
+        </div>
+        <div class="sk-cat rv">Systèmes &amp; Infrastructure</div>
+        <div class="tags">
+          <span class="tag hi hover-target rv">Linux (Kali)</span>
+          <span class="tag hover-target rv">Windows Server</span>
+          <span class="tag hover-target rv">Active Directory</span>
+          <span class="tag hover-target rv">Docker</span>
+          <span class="tag hover-target rv">GNS3</span>
+          <span class="tag hover-target rv">MySQL</span>
+          <span class="tag hover-target rv">Node.js</span>
+        </div>
+      </div>
+      <div>
+        <div class="sk-cat rv">Cybersécurité</div>
+        <div class="tags">
+          <span class="tag hi hover-target rv">Pentest Web</span>
+          <span class="tag hi hover-target rv">Reverse Engineering</span>
+          <span class="tag hover-target rv">Malware Analysis</span>
+          <span class="tag hover-target rv">OSINT</span>
+          <span class="tag hover-target rv">Forensique Numérique</span>
+          <span class="tag hover-target rv">Cryptographie RSA</span>
+          <span class="tag hover-target rv">OWASP Top 10</span>
+          <span class="tag hover-target rv">SQLi &amp; XSS</span>
+          <span class="tag hover-target rv">Scapy / Nmap</span>
+        </div>
+        <div class="sk-cat rv">Réseaux</div>
+        <div class="tags">
+          <span class="tag hi hover-target rv">TCP/IP</span>
+          <span class="tag hover-target rv">IPv4 / IPv6</span>
+          <span class="tag hover-target rv">Routage &amp; Subnetting</span>
+          <span class="tag hover-target rv">Pare-feu &amp; NAT</span>
+          <span class="tag hover-target rv">DHCP / DNS</span>
+          <span class="tag hover-target rv">TLS / HTTPS</span>
+          <span class="tag hover-target rv">Wireshark</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="slbl rv">06 — Contact</div>
+    <div class="c-big rv glitch-hover" data-t="TRAVAILLONS ENSEMBLE.">TRAVAILLONS<br>ENSEMBLE<span class="acc">.</span></div>
+    
+    <div class="c-links rv">
+      <a href="https://www.linkedin.com/in/fouad-azzouzi" class="c-lnk mag mag-target hover-target glitch-hover sound-hover" data-t="↗ LINKEDIN" target="_blank">
+        <span class="arr">↗</span> LinkedIn
+      </a>
+      <a href="mailto:fouad.azt@hotmail.com" class="c-lnk mag mag-target hover-target glitch-hover sound-hover" data-t="↗ EMAIL">
+        <span class="arr">↗</span> Email
+      </a>
+      <a href="https://github.com/Fwd-Catenet" class="c-lnk mag mag-target hover-target glitch-hover sound-hover" data-t="↗ GITHUB" target="_blank">
+        <span class="arr">↗</span> GitHub
+      </a>
+      <a href="FouadAzzouzi_CV.pdf" download="FouadAzzouzi_CV.pdf" class="btn-cv mag mag-target hover-target glitch-hover sound-hover" data-t="↓ TÉLÉCHARGER CV">
+        ↓ Télécharger CV
+      </a>
+    </div>
+
+    <div class="tfooter rv hover-target">
+      <div class="tfc">
+        <span class="p">$ </span>./connect --with <span class="s">"Fouad Azzouzi"</span> --via linkedin --domain cybersec
+      </div>
+      <div class="tfs">EPITA × École Polytechnique · Bachelor Cybersécurité · 2025–2028</div>
+    </div>
+  </section>
+
+</div> 
+
+<script src="script.js"></script>
+<script src="cv-data.js"></script>
+</body>
+</html>
