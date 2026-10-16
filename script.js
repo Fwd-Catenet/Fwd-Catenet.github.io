@@ -64,7 +64,7 @@ toggleBtn.addEventListener('click', () => {
     }
 
     // Mettre à jour la vitesse des particules instantanément
-    pts.forEach(p => p.setTeamSpeed(isBlueTeam));
+    bgSetTeam();
     playClick();
 });
 
@@ -169,122 +169,92 @@ const tickId = setInterval(() => {
   }
 }, 28);
 
-/* ─── CANVAS AVANCÉ (RED TEAM vs BLUE TEAM) ─── */
+/* ─── FOND : COURBES DE NIVEAU (topographie) ─── */
 const cvs  = document.getElementById('cvs');
 const gctx = cvs.getContext('2d');
-let pts = [];
-let N = window.innerWidth > 768 ? 130 : 50; 
-const DIST = 160;
+let W = 0, H = 0, DPR = 1;
 
-function resize() {
-  cvs.width  = window.innerWidth;
-  cvs.height = window.innerHeight;
-  N = window.innerWidth > 768 ? 130 : 50;
-  initPts();
+function accent(a) { return isBlueTeam ? `rgba(0,229,255,${a})` : `rgba(255,42,42,${a})`; }
+
+{ const st = document.createElement('style');
+  st.textContent = '#hero::before{display:none}';
+  document.head.appendChild(st); }
+
+/* — bruit 2D (pour 'topo') — */
+const PERM = new Uint8Array(512);
+(function () { const p = [...Array(256).keys()]; let s = 1337;
+  for (let i = 255; i > 0; i--) { s = (s * 16807) % 2147483647; const j = s % (i + 1); [p[i], p[j]] = [p[j], p[i]]; }
+  for (let i = 0; i < 512; i++) PERM[i] = p[i & 255]; })();
+function grad(h, x, y) { const a = (h & 7) * Math.PI / 4; return Math.cos(a) * x + Math.sin(a) * y; }
+function noise(x, y) {
+  const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, xf = x - Math.floor(x), yf = y - Math.floor(y);
+  const f = t => t * t * t * (t * (t * 6 - 15) + 10), u = f(xf), v = f(yf);
+  const aa = PERM[PERM[X] + Y], ab = PERM[PERM[X] + Y + 1], ba = PERM[PERM[X + 1] + Y], bb = PERM[PERM[X + 1] + Y + 1];
+  const l1 = grad(aa, xf, yf) + u * (grad(ba, xf - 1, yf) - grad(aa, xf, yf));
+  const l2 = grad(ab, xf, yf - 1) + u * (grad(bb, xf - 1, yf - 1) - grad(ab, xf, yf - 1));
+  return l1 + v * (l2 - l1);
 }
+function fbm(x, y) { return noise(x, y) * .6 + noise(x * 2.1, y * 2.1) * .3 + noise(x * 4.3, y * 4.3) * .1; }
 
-class Pt {
-  constructor() {
-    this.x  = Math.random() * window.innerWidth;
-    this.y  = Math.random() * window.innerHeight;
-    this.r  = Math.random() * 2 + 1;
-    this.a  = Math.random() * .7 + .3;
-    this.setTeamSpeed(isBlueTeam);
-  }
-  
-  setTeamSpeed(isBlue) {
-    if(isBlue) {
-        // Vitesse très lente (Défense/Monitoring)
-        this.vx = (Math.random() - .5) * 0.15;
-        this.vy = (Math.random() - .5) * 0.15;
-    } else {
-        // Vitesse agressive (Attaque)
-        this.vx = (Math.random() - .5) * 0.5;
-        this.vy = (Math.random() - .5) * 0.5;
-    }
-  }
-
-  move() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < 0 || this.x > window.innerWidth)  this.vx *= -1;
-    if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
-    
-    const dx = this.x - mx, dy = this.y - my;
-    const d  = Math.sqrt(dx*dx + dy*dy);
-    
-    if(!isBlueTeam) {
-        // RED TEAM : Attraction agressive
-        if (d < 200 && d > 0) {
-          const f = (200 - d) / 200;
-          this.x += (dx / d) * f * 2.5;
-          this.y += (dy / d) * f * 2.5;
-        }
-    } else {
-        // BLUE TEAM : Répulsion douce (Bouclier/Shield)
-        if (d < 150 && d > 0) {
-          const f = (150 - d) / 150;
-          this.x -= (dx / d) * f * 0.5;
-          this.y -= (dy / d) * f * 0.5;
-        }
-    }
-  }
-  draw() {
-    gctx.beginPath();
-    gctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    gctx.fillStyle = isBlueTeam ? `rgba(0, 229, 255, ${this.a})` : `rgba(255, 42, 42, ${this.a})`;
-    gctx.fill();
-  }
-}
-
-function initPts() { pts = Array.from({length: N}, () => new Pt()); }
-
-(function frame() {
-  gctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  for (let i = 0; i < pts.length; i++) {
-    pts[i].move(); pts[i].draw();
-    for (let j = i + 1; j < pts.length; j++) {
-      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-      const d  = Math.sqrt(dx*dx + dy*dy);
-      if (d < DIST) {
-        gctx.beginPath();
-        gctx.moveTo(pts[i].x, pts[i].y);
-        
-        if(isBlueTeam) {
-            // Lignes Circuit Imprimé (Orthogonales)
-            gctx.lineTo(pts[i].x, pts[j].y);
-            gctx.lineTo(pts[j].x, pts[j].y);
-            gctx.strokeStyle = `rgba(0, 229, 255, ${(1 - d/DIST) * 0.25})`; 
-        } else {
-            // Lignes Directes Agressives
-            gctx.lineTo(pts[j].x, pts[j].y);
-            gctx.strokeStyle = `rgba(255, 42, 42, ${(1 - d/DIST) * 0.25})`; 
-        }
-        
-        gctx.lineWidth   = .8;
-        gctx.stroke();
+let topoCanvas = null;
+function buildTopo() {
+  const pad = 400, w = W + pad, h = H + pad, cell = 10;
+  topoCanvas = document.createElement('canvas');
+  topoCanvas.width = w * DPR; topoCanvas.height = h * DPR;
+  const c = topoCanvas.getContext('2d'); c.scale(DPR, DPR);
+  const cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1, sc = 0.0042;
+  const v = new Float32Array(cols * rows);
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) v[j * cols + i] = fbm(i * cell * sc, j * cell * sc);
+  const levels = 22;
+  for (let L = 0; L < levels; L++) {
+    const t = -0.6 + 1.2 * L / levels, major = L % 4 === 0;
+    c.beginPath();
+    for (let j = 0; j < rows - 1; j++) for (let i = 0; i < cols - 1; i++) {
+      const a = v[j * cols + i], b = v[j * cols + i + 1], d = v[(j + 1) * cols + i], e = v[(j + 1) * cols + i + 1];
+      const k = (a > t ? 8 : 0) | (b > t ? 4 : 0) | (e > t ? 2 : 0) | (d > t ? 1 : 0);
+      if (k === 0 || k === 15) continue;
+      const x = i * cell, y = j * cell, lp = (p, q) => (t - p) / (q - p);
+      const T = [x + cell * lp(a, b), y], R = [x + cell, y + cell * lp(b, e)],
+            B = [x + cell * lp(d, e), y + cell], Lf = [x, y + cell * lp(a, d)];
+      const seg = (p, q) => { c.moveTo(p[0], p[1]); c.lineTo(q[0], q[1]); };
+      switch (k) {
+        case 1: case 14: seg(Lf, B); break;   case 2: case 13: seg(B, R); break;
+        case 3: case 12: seg(Lf, R); break;   case 4: case 11: seg(T, R); break;
+        case 5: seg(Lf, T); seg(B, R); break; case 6: case 9: seg(T, B); break;
+        case 7: case 8: seg(Lf, T); break;    case 10: seg(T, R); seg(Lf, B); break;
       }
     }
-    
-    // Lignes vers la souris
-    const dMouse = Math.sqrt(Math.pow(pts[i].x - mx, 2) + Math.pow(pts[i].y - my, 2));
-    if(dMouse < 250) {
-        gctx.beginPath();
-        gctx.moveTo(pts[i].x, pts[i].y);
-        
-        if(isBlueTeam) {
-             gctx.lineTo(pts[i].x, my);
-             gctx.lineTo(mx, my);
-             gctx.strokeStyle = `rgba(0, 229, 255, ${(1 - dMouse/250) * 0.5})`;
-        } else {
-             gctx.lineTo(mx, my);
-             gctx.strokeStyle = `rgba(255, 42, 42, ${(1 - dMouse/250) * 0.8})`;
-        }
-        
-        gctx.lineWidth = isBlueTeam ? 1 : 1.5;
-        gctx.stroke();
-    }
+    c.strokeStyle = major ? 'rgba(255,255,255,0.13)' : 'rgba(255,255,255,0.06)';
+    c.lineWidth = major ? 1 : .7;
+    c.stroke();
   }
+}
+
+function resize() {
+  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  W = window.innerWidth; H = window.innerHeight;
+  cvs.width = W * DPR; cvs.height = H * DPR;
+  gctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  buildTopo();
+}
+
+function bgSetTeam() {}
+
+let topoT = 0;
+function drawTopo() {
+  if (!topoCanvas) return;
+  topoT += isBlueTeam ? 0.05 : 0.12;
+  const ox = -200 + Math.sin(topoT / 400) * 120 + (mx / W - .5) * -30;
+  const oy = -200 + Math.cos(topoT / 500) * 120 + (my / H - .5) * -30;
+  gctx.drawImage(topoCanvas, ox, oy, W + 400, H + 400);
+  const g = gctx.createRadialGradient(mx, my, 0, mx, my, 260);
+  g.addColorStop(0, accent(0.07)); g.addColorStop(1, accent(0));
+  gctx.fillStyle = g; gctx.fillRect(0, 0, W, H);
+}
+
+(function frame() {
+  gctx.clearRect(0, 0, W, H);
+  drawTopo();
   requestAnimationFrame(frame);
 })();
 
@@ -296,7 +266,9 @@ const prog = document.getElementById('prog');
 const secs = ['about','curriculum','expertise','projets','skills','contact'];
 const navLinks = document.querySelectorAll('.nlinks a[data-sec]');
 
+const navEl = document.querySelector('nav');
 window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', scrollY > 40);
   const p = scrollY / (document.documentElement.scrollHeight - innerHeight);
   prog.style.width = Math.min(p * 100, 100) + '%';
   let cur = '';
